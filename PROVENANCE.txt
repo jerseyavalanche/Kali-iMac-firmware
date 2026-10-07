@@ -1,0 +1,30 @@
+OFFLINE Wi-Fi firmware for Rich's iMac / Kali Linux
+Broadcom BCM4322, PCI ID 14e4:432b
+
+1. Copy Mac-WiFi.zip to your SD card.
+2. Insert the card reader into the Mac running Kali.
+3. Copy the ZIP to the Desktop, right-click it and choose Extract Here.
+4. Open the extracted Mac-WiFi folder containing install.sh.
+5. Right-click empty space in that folder and choose Open Terminal Here.
+6. Run:
+   sudo bash install.sh
+7. Wait 10 seconds, then select your network in Kali's network menu.
+
+No internet, package downloads or compiler required on the Mac.
+The script checks the card and payload checksums, backs up any existing b43
+firmware under /var/tmp, copies the firmware and reloads b43.
+It does not format or repartition anything. No reboot is needed.
+If Kali Live has no persistence, repeat the installation after rebooting.
+Verified source and extracted files; not hardware-tested on your iMac.
+
+PROVENANCE
+Firmware extracted with b43-fwcutter 019 from broadcom-wl-6.30.163.46.
+Firmware remains third-party Broadcom binary firmware.
+Source archive:
+https://github.com/minios-linux/b43-firmware/releases/download/b43-firmware/broadcom-wl-6.30.163.46.tar.bz2
+Archive SHA512 verified against Debian's firmware-b43-installer postinst:
+0144894fbbb5e8ebab6c423d9bd0f3249be94f2f468a50b8bf721a3b17f1f6e57467c79e87abc8d136bfc92e701ed046885fead892e9a73efa5217d710311ae9
+Debian source selects this version for device ID 432b:
+https://sources.debian.org/src/b43-fwcutter/1:019-14/debian/firmware-b43-installer.postinst/
+Extractor source:
+https://deb.debian.org/debian/pool/contrib/b/b43-fwcutter/b43-fwcutter_019.orig.tar.bz2
